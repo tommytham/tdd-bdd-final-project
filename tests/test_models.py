@@ -149,6 +149,17 @@ class TestProductModel(unittest.TestCase):
         # Assert that no products exists in the database
         products = Product.all()
         self.assertEqual(len(products), 0)
+
+    def test_get_all_products(self):
+        """It should Get all products from the database"""
+        products = Product.all()
+        self.assertEqual(len(products),0)
+        for i in range(5):
+            product = ProductFactory()
+            product.create()
+        # Assert we have expected number of products in the database
+        products = Product.all()
+        self.assertEqual(len(products),5)
     #
     # ADD YOUR TEST CASES HERE
     #
